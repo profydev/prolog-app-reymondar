@@ -24,6 +24,11 @@ describe("Sidebar Navigation", () => {
 
       cy.get("nav").contains("Settings").click();
       cy.url().should("eq", "http://localhost:3000/dashboard/settings");
+
+      cy.get("nav").contains("Support").click();
+      cy.then((link) => {
+        cy.trigger("click").its("status").should("eq", 200);
+      });
     });
 
     it("is collapsible", () => {
