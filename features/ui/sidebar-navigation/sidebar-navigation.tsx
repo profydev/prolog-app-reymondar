@@ -69,10 +69,13 @@ const Header = styled.header`
 `;
 
 const Logo = styled.img`
-  width: 7.375rem;
+  @media (max-width: ${breakpoint("desktop")}) {
+    width: ${({ src }) => (src ? space(4) : space(24))};
+  }
 
   @media (min-width: ${breakpoint("desktop")}) {
     margin: ${space(0, 4)};
+    width: ${space(24)};
   }
 `;
 
@@ -193,7 +196,11 @@ export function SidebarNavigation() {
               text="Support"
               iconSrc="/icons/support.svg"
               isCollapsed={isSidebarCollapsed}
-              onClick={() => alert("Support")}
+              onClick={() =>
+                window.open(
+                  "mailto:support@prolog-app.com?subject=Support Request:"
+                )
+              }
             />
             <CollapseMenuItem
               text="Collapse"
